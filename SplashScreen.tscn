@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/53-Theme-Ass-Required.png" type="Texture" id=1]
+[ext_resource path="res://Assets/four-colors.png" type="Texture" id=2]
+[ext_resource path="res://Assets/thermo.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+func _on_Timer_timeout():
+	SceneTransition.change_scene(\"res://Menu.tscn\")
+"
+
+[node name="Splash Screen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -512.0
+margin_top = 14.0
+margin_right = 3584.0
+margin_bottom = 2396.0
+rect_scale = Vector2( 0.25, 0.25 )
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+margin_right = 4096.0
+margin_bottom = 770.0
+texture = ExtResource( 1 )
+stretch_mode = 4
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="."]
+margin_left = 2.0
+margin_top = 195.0
+margin_right = 3962.0
+margin_bottom = 1663.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.25, 0.25 )
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer2"]
+margin_left = 1098.0
+margin_right = 1978.0
+margin_bottom = 1468.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer2"]
+margin_left = 1982.0
+margin_right = 2862.0
+margin_bottom = 1468.0
+texture = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/HoldObject.mp3-9f355c77239f39296d4c22c654f0f94c.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/HoldObject.mp3"
+dest_files=[ "res://.import/HoldObject.mp3-9f355c77239f39296d4c22c654f0f94c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

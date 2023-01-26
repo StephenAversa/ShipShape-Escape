@@ -1,0 +1,243 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Assets/Enemy2_Body.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Enemy2_Arms.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Enemy2_Wing.png" type="Texture" id=3]
+[ext_resource path="res://Enemy2.gd" type="Script" id=4]
+[ext_resource path="res://StateMachine.gd" type="Script" id=5]
+[ext_resource path="res://Enemy2_Idle.gd" type="Script" id=6]
+[ext_resource path="res://Enemy2_Attack.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Blink"
+length = 2.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.4, 1.5, 1.6, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Arms"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "flap"
+length = 1.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -50.0, 15.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 50.0, -15.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 11.0454
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 103, 76.5 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 3.5, 12 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 21.5, 2 )
+
+[node name="Enemy2" type="KinematicBody2D" groups=["gravity"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 4 )
+
+[node name="Head" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Head"]
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head"]
+autoplay = "Blink"
+anims/Blink = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Arms" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Arms"]
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Arms"]
+autoplay = "Arms"
+anims/Arms = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="Wings" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Wings"]
+position = Vector2( -9, -11 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 3 )
+offset = Vector2( -4.66667, -0.666667 )
+
+[node name="Sprite2" type="Sprite" parent="Wings"]
+position = Vector2( 8.78707, -11.0506 )
+scale = Vector2( -1.5, 1.5 )
+texture = ExtResource( 3 )
+offset = Vector2( -4.80862, -0.632929 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Wings"]
+autoplay = "flap"
+anims/RESET = SubResource( 5 )
+anims/flap = SubResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3 )
+shape = SubResource( 7 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 70 )
+collision_mask = 256
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 20 )
+collision_mask = 256
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 5 )
+initial_state = NodePath("Enemy_Idle")
+
+[node name="Enemy_Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
+
+[node name="Enemy_Attack" type="Node" parent="StateMachine"]
+script = ExtResource( 7 )
+
+[node name="AttackCheck" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackCheck"]
+position = Vector2( -103, 66.5 )
+shape = SubResource( 8 )
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 13.5, 1 )
+shape = SubResource( 9 )
+
+[node name="Area2D2" type="Area2D" parent="." groups=["enemy_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2( -13, 1 )
+shape = SubResource( 9 )
+
+[node name="Head2" type="Area2D" parent="." groups=["bounce"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head2"]
+position = Vector2( 0.5, -16 )
+shape = SubResource( 10 )
+
+[connection signal="body_entered" from="AttackCheck" to="." method="_on_AttackCheck_body_entered"]
+[connection signal="body_exited" from="AttackCheck" to="." method="_on_AttackCheck_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

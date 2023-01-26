@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/thunk1.mp3-eda3eab81a79007ed50575021d27ed58.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/thunk1.mp3"
+dest_files=[ "res://.import/thunk1.mp3-eda3eab81a79007ed50575021d27ed58.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

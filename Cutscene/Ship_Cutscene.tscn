@@ -1,0 +1,264 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Assets/Ship_3_Panel.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Ship_Broken.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Ship_1_Panel.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Ship_2_Panel.png" type="Texture" id=4]
+[ext_resource path="res://Cutscene/Ship_Cutscene.gd" type="Script" id=5]
+[ext_resource path="res://Assets/ARCADECLASSIC.TTF" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/JetParticle.png" type="Texture" id=7]
+[ext_resource path="res://Cutscene/ShipPart.gd" type="Script" id=8]
+[ext_resource path="res://Cutscene/Ship.gd" type="Script" id=9]
+
+[sub_resource type="Animation" id=4]
+resource_name = "Cutscene"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ship2/Ship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 512, 300 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ship2/ShipParts/Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 488, 312 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ship2/ShipParts/BackPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 464, 288 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ship2/ThrusterParticles:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 470, 294 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Ship2/ShipParts/Thruster:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 481, 296 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ship2/Ship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 512, 300 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ship2/ShipParts/Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 488, 312 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ship2/ShipParts/BackPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 464, 288 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ship2/ThrusterParticles:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 470, 294 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Ship2/ShipParts/Thruster:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 481, 296 ) ]
+}
+
+[sub_resource type="Theme" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+font_data = ExtResource( 6 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.996591 ), 0.0, 0.0, 0, 0, Vector2( 0.618812, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0147727 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Cutscene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -16.0
+margin_top = 4.0
+margin_right = -16.0
+margin_bottom = 4.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NextLevelTimer" type="Timer" parent="."]
+
+[node name="Control" type="Control" parent="."]
+margin_left = 550.0
+margin_top = 271.0
+margin_right = 590.0
+margin_bottom = 311.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Cutscene = SubResource( 4 )
+anims/RESET = SubResource( 7 )
+
+[node name="NextCharTimer" type="Timer" parent="."]
+
+[node name="Text" type="Label" parent="."]
+anchor_left = 0.25
+anchor_right = 0.75
+margin_top = 400.0
+margin_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 5 )
+custom_colors/font_color = Color( 0.945098, 0.94902, 0.854902, 1 )
+custom_fonts/font = SubResource( 6 )
+align = 1
+autowrap = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 1028, 0 )
+z_index = -5
+amount = 100
+lifetime = 15.0
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 512 )
+direction = Vector2( -100, 0 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+scale_amount = 2.0
+scale_amount_random = 0.5
+color = Color( 0.945098, 0.94902, 0.854902, 1 )
+
+[node name="NextMessageTimer" type="Timer" parent="."]
+
+[node name="Ship2" type="Node2D" parent="."]
+
+[node name="ShipParts" type="Node2D" parent="Ship2"]
+
+[node name="Panel" type="Sprite" parent="Ship2/ShipParts"]
+position = Vector2( 488, 312 )
+texture = ExtResource( 3 )
+script = ExtResource( 8 )
+
+[node name="BackPanel" type="Sprite" parent="Ship2/ShipParts"]
+position = Vector2( 464, 288 )
+z_index = -1
+texture = ExtResource( 4 )
+script = ExtResource( 8 )
+
+[node name="Thruster" type="Sprite" parent="Ship2/ShipParts"]
+position = Vector2( 481, 296 )
+z_index = 15
+texture = ExtResource( 1 )
+script = ExtResource( 8 )
+
+[node name="Ship" type="Sprite" parent="Ship2"]
+position = Vector2( 512, 300 )
+z_index = -2
+texture = ExtResource( 2 )
+script = ExtResource( 9 )
+
+[node name="ThrusterParticles" type="CPUParticles2D" parent="Ship2"]
+position = Vector2( 470, 294 )
+scale = Vector2( 0.05, 0.05 )
+z_index = 3
+amount = 20
+speed_scale = 2.0
+texture = ExtResource( 7 )
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 75 )
+direction = Vector2( -200, 0 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 800.0
+scale_amount = 12.0
+scale_amount_random = 0.5
+scale_amount_curve = SubResource( 3 )
+color = Color( 0.945098, 0.94902, 0.854902, 1 )
+
+[node name="ExplodeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="NextMessageTimer2" type="Timer" parent="."]
+one_shot = true
+
+[node name="NextLevel" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="NextLevelTimer" to="." method="_on_NextLevelTimer_timeout"]
+[connection signal="timeout" from="NextCharTimer" to="." method="_on_NextCharTimer_timeout"]
+[connection signal="timeout" from="NextMessageTimer" to="." method="_on_NextMessageTimer_timeout"]
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_ExplodeTimer_timeout"]
+[connection signal="timeout" from="NextMessageTimer2" to="." method="_on_NextMessageTimer2_timeout"]
+[connection signal="timeout" from="NextLevel" to="." method="_on_NextLevel_timeout"]
